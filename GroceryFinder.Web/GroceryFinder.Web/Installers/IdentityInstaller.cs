@@ -11,7 +11,15 @@ public class IdentityInstaller : IInstaller
 {
     public void InstallServices(IServiceCollection services, IConfiguration configuration)
     {
-        services.AddIdentity<AppUser, UserRole>()
+        // Password requirements can be changed
+        services.AddIdentity<AppUser, UserRole>(options =>
+        {
+            options.Password.RequireDigit = false;
+            options.Password.RequiredLength = 3;
+            options.Password.RequireLowercase = false;
+            options.Password.RequireUppercase = false;
+            options.Password.RequireNonAlphanumeric = false;
+        })
             .AddEntityFrameworkStores<GroceryFinderDbContext>()
             .AddDefaultTokenProviders();
 

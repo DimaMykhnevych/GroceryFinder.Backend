@@ -22,6 +22,7 @@ public class SwaggerInstaller : IInstaller
                     Type = SecuritySchemeType.ApiKey
                 });
             x.AddSecurityRequirement(security);
+            x.EnableAnnotations();
         });
     }
 }
