@@ -25,7 +25,7 @@ public class AuthController : ControllerBase
             "0 = Invalid userName or password\n\n" +
             "1 = Email confirmation required\n\n" +
             "100 = User was successfully authorized")]
-    [SwaggerResponse((int)HttpStatusCode.OK, Type = typeof(JWTTokenStatusResultDto))]
+    [SwaggerResponse((int)HttpStatusCode.OK, Type = typeof(JWTTokenStatusResult))]
     public async Task<IActionResult> Login([FromBody] AuthSignInModel model)
     {
         JWTTokenStatusResult result = await _authorizationService.GenerateTokenAsync(model);

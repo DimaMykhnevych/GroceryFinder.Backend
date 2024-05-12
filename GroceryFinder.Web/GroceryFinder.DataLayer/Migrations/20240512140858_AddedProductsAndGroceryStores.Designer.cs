@@ -3,6 +3,7 @@ using System;
 using GroceryFinder.DataLayer.DbContext;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace GroceryFinder.DataLayer.Migrations
 {
     [DbContext(typeof(GroceryFinderDbContext))]
-    partial class GroceryFinderDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240512140858_AddedProductsAndGroceryStores")]
+    partial class AddedProductsAndGroceryStores
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -114,7 +116,7 @@ namespace GroceryFinder.DataLayer.Migrations
                     b.Property<string>("LogoImageUri")
                         .HasColumnType("longtext");
 
-                    b.Property<double>("Longitude")
+                    b.Property<double>("Longtitude")
                         .HasColumnType("double");
 
                     b.Property<string>("Name")
@@ -123,11 +125,11 @@ namespace GroceryFinder.DataLayer.Migrations
                     b.Property<string>("Street")
                         .HasColumnType("longtext");
 
-                    b.Property<string>("WorkFrom")
-                        .HasColumnType("longtext");
+                    b.Property<TimeOnly>("WorkFrom")
+                        .HasColumnType("time(6)");
 
-                    b.Property<string>("WorkTo")
-                        .HasColumnType("longtext");
+                    b.Property<TimeOnly>("WorkTo")
+                        .HasColumnType("time(6)");
 
                     b.HasKey("Id");
 

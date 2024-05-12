@@ -11,6 +11,10 @@ public class MappingProfile : Profile
         CreateMap<CreateUserDto, AppUser>()
         .ForMember(u => u.Role, m => m.MapFrom(u => u.Role))
         .ForMember(u => u.UserName, m => m.MapFrom(u => u.UserName));
+
+        CreateMap<ProductDto, Product>().ReverseMap();
+        CreateMap<GroceryStoreDto, GroceryStore>().ReverseMap();
+        CreateMap<ProductGroceryStoreDto, ProductGroceryStore>().ReverseMap();
     }
 }
 
