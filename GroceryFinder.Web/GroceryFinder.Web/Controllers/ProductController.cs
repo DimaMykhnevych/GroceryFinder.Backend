@@ -25,6 +25,14 @@ public class ProductController : ControllerBase
         return Ok(products);
     }
 
+    [HttpGet("{id}")]
+    [SwaggerOperation(Summary = "Gets product by id")]
+    public async Task<IActionResult> GetProduct(Guid id)
+    {
+        ProductDto product = await _productService.GetProduct(id);
+        return Ok(product);
+    }
+
     [HttpPost]
     [Authorize(Roles = Role.Admin)]
     [SwaggerOperation(Summary = "Adds new product",

@@ -30,5 +30,11 @@ public class ProductService : IProductService
         var products = await _productRepository.GetAll();
         return _mapper.Map<IEnumerable<ProductDto>>(products);
     }
+
+    public async Task<ProductDto> GetProduct(Guid id)
+    {
+        var product = await _productRepository.Get(id);
+        return _mapper.Map<ProductDto>(product);
+    }
 }
 

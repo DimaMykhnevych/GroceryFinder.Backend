@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using GroceryFinder.BusinessLayer.DTOs;
+using GroceryFinder.DataLayer.Enums;
 using GroceryFinder.DataLayer.Models;
 
 namespace GroceryFinder.BusinessLayer.Mappers;
@@ -15,6 +16,7 @@ public class MappingProfile : Profile
         CreateMap<ProductDto, Product>().ReverseMap();
         CreateMap<GroceryStoreDto, GroceryStore>().ReverseMap();
         CreateMap<ProductGroceryStoreDto, ProductGroceryStore>().ReverseMap();
+        CreateMap<GroceryStoreSearchModeDto, GroceryStoreSearchMode>().ReverseMap();
     }
 }
 

@@ -5,6 +5,7 @@ using GroceryFinder.BusinessLayer.Services.GroceryStoreService;
 using GroceryFinder.BusinessLayer.Services.ProductGroceryStoreService;
 using GroceryFinder.BusinessLayer.Services.ProductService;
 using GroceryFinder.BusinessLayer.Services.UserService;
+using GroceryFinder.DataLayer.Builders.GroceryStoreQueryBuilder;
 using GroceryFinder.DataLayer.Repositories.GroceryStoreRepository;
 using GroceryFinder.DataLayer.Repositories.ProductGroceryStoreRepository;
 using GroceryFinder.DataLayer.Repositories.ProductRepository;
@@ -28,6 +29,7 @@ public class ServiceComponentsDiInstaller : IInstaller
         services.AddTransient<IProductGroceryStoreService, ProductGroceryStoreService>();
 
         // builders
+        services.AddTransient<IGroceryStoreQueryBuilder, GroceryStoreQueryBuilder>();
 
         // repositories
         services.AddTransient<IUserRepository, UserRepository>();

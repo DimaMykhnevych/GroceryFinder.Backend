@@ -26,6 +26,16 @@ public class GroceryStoreController : ControllerBase
         return Ok(groceryStores);
     }
 
+    [HttpGet("search-by-product")]
+    [SwaggerOperation(
+        Summary = "Searches grocery stores that contain certain product",
+        Description = "Available only for administrators")]
+    public async Task<IActionResult> SearchGroceryStores([FromQuery] GroceryStoreSearchDto groceryStoreSearchDto)
+    {
+        var stores = await _groceryStoreService.SearchGroceryStores(groceryStoreSearchDto);
+        return Ok(stores);
+    }
+
     [HttpPost]
     [Authorize(Roles = Role.Admin)]
     [SwaggerOperation(Summary = "Adds new grocery store",
