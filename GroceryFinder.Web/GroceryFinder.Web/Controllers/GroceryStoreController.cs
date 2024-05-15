@@ -29,7 +29,15 @@ public class GroceryStoreController : ControllerBase
     [HttpGet("search-by-product")]
     [SwaggerOperation(
         Summary = "Searches grocery stores that contain certain product",
-        Description = "Available only for administrators")]
+        Description = "The ProductId is mandatory and should be set for all search modes.\n\n" +
+        "Latitude, Longitude - the current location of the user (can be retrieved from the browser).\n\n" +
+        "Radius should be set in meters.\n\n" +
+        "The following search approaches are supported:\n" +
+        "1. Find stores with required product in certain radius. For that mode Latitude, Longitude and Radius should be set.\n" +
+        "2. Find nearest stores with required product (top 10 nearest stores). For that mode Latitude, Longitude and GroceryStoreSearchMode = 1 should be set.\n" +
+        "3. Find stores with the lowest prices for required product (top 10 cheapest stores). For that mode GroceryStoreSearchMode = 2 should be set.\n\n" +
+        "You can combine these three search modes, e.g. you can find top 10 cheapest stores in certain radius, etc.\n\n" +
+        "Also you can set just ProductId and then all stores that have that product will be displayed.")]
     public async Task<IActionResult> SearchGroceryStores([FromQuery] GroceryStoreSearchDto groceryStoreSearchDto)
     {
         var stores = await _groceryStoreService.SearchGroceryStores(groceryStoreSearchDto);

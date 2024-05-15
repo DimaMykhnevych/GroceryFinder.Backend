@@ -11,6 +11,8 @@ namespace GroceryFinder.BusinessLayer.Services.GroceryStoreService;
 
 public class GroceryStoreService : IGroceryStoreService
 {
+    private const int MaxStoresTake = 10;
+
     private readonly IGroceryStoreRepository _groceryStoreRepository;
     private readonly IProductRepository _productRepository;
     private readonly IGroceryStoreQueryBuilder _groceryStoreQueryBuilder;
@@ -100,7 +102,7 @@ public class GroceryStoreService : IGroceryStoreService
             return stores
                 .Select(s => new { Store = s, Distance = CalculateDistance(s, latitude.Value, longitude.Value) })
                 .OrderBy(s => s.Distance)
-                .Take(10)
+                .Take(MaxStoresTake)
                 .Select(s => s.Store);
         }
 
@@ -109,7 +111,7 @@ public class GroceryStoreService : IGroceryStoreService
             return stores
                 .Select(s => new { Store = s, s.ProductGroceryStores.First(gs => gs.ProductId == productId.Value).Price })
                 .OrderBy(s => s.Price)
-                .Take(10)
+                .Take(MaxStoresTake)
                 .Select(s => s.Store);
         }
 
