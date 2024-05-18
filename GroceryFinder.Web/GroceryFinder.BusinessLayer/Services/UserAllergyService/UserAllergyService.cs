@@ -24,8 +24,7 @@ public class UserAllergyService : IUserAllergyService
 
     public async Task<IEnumerable<UserAllergyDto>> GetAll(Guid userId)
     {
-        var allergies = await _userAllergyRepository.GetAll();
-        allergies = allergies.Where(a => a.AppUserId == userId).ToList();
+        var allergies = await _userAllergyRepository.GetUserAlergiesAsync(userId);
         return _mapper.Map<IEnumerable<UserAllergyDto>>(allergies);
     }
 
