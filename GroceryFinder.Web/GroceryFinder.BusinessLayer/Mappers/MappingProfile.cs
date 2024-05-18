@@ -17,6 +17,8 @@ public class MappingProfile : Profile
         CreateMap<GroceryStoreDto, GroceryStore>().ReverseMap();
         CreateMap<ProductGroceryStoreDto, ProductGroceryStore>().ReverseMap();
         CreateMap<GroceryStoreSearchModeDto, GroceryStoreSearchMode>().ReverseMap();
+        CreateMap<AllergenTypeDto, AllergenType>().ReverseMap();
+        CreateMap<UserAllergyDto, UserAllergy>().ReverseMap();
     }
 }
 
