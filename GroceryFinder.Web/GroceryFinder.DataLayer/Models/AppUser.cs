@@ -7,5 +7,6 @@ public class AppUser : IdentityUser<Guid>
     public DateTime RegistryDate { get; set; }
 
     public ICollection<UserAllergy> Allergies { get; set; }
+    public ICollection<PriceUpdateSubscription> PriceUpdateSubscriptions { get; set; }
 }
 

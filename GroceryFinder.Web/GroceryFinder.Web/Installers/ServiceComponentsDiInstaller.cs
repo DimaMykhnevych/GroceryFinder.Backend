@@ -2,12 +2,14 @@
 using GroceryFinder.BusinessLayer.Services.AuthorizationService;
 using GroceryFinder.BusinessLayer.Services.EmailService;
 using GroceryFinder.BusinessLayer.Services.GroceryStoreService;
+using GroceryFinder.BusinessLayer.Services.PriceUpdateSubscriptionService;
 using GroceryFinder.BusinessLayer.Services.ProductGroceryStoreService;
 using GroceryFinder.BusinessLayer.Services.ProductService;
 using GroceryFinder.BusinessLayer.Services.UserAllergyService;
 using GroceryFinder.BusinessLayer.Services.UserService;
 using GroceryFinder.DataLayer.Builders.GroceryStoreQueryBuilder;
 using GroceryFinder.DataLayer.Repositories.GroceryStoreRepository;
+using GroceryFinder.DataLayer.Repositories.PriceUpdateSubscriptionRepository;
 using GroceryFinder.DataLayer.Repositories.ProductGroceryStoreRepository;
 using GroceryFinder.DataLayer.Repositories.ProductRepository;
 using GroceryFinder.DataLayer.Repositories.UserAllergyRepository;
@@ -30,6 +32,7 @@ public class ServiceComponentsDiInstaller : IInstaller
         services.AddTransient<IGroceryStoreService, GroceryStoreService>();
         services.AddTransient<IProductGroceryStoreService, ProductGroceryStoreService>();
         services.AddTransient<IUserAllergyService, UserAllergyService>();
+        services.AddTransient<IPriceUpdateSubscriptionService, PriceUpdateSubscriptionService>();
 
         // builders
         services.AddTransient<IGroceryStoreQueryBuilder, GroceryStoreQueryBuilder>();
@@ -40,6 +43,7 @@ public class ServiceComponentsDiInstaller : IInstaller
         services.AddTransient<IGroceryStoreRepository, GroceryStoreRepository>();
         services.AddTransient<IProductGroceryStoreRepository, ProductGroceryStoreRepository>();
         services.AddTransient<IUserAllergyRepository, UserAllergyRepository>();
+        services.AddTransient<IPriceUpdateSubscriptionRepository, PriceUpdateSubscriptionRepository>();
     }
 }
 

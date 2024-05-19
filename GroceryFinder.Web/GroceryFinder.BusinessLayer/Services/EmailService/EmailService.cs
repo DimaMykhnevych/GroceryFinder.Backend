@@ -21,17 +21,17 @@ public class EmailService : IEmailService
         MailAddress addressTo = new (user.Email);
         MailMessage message = new (addressFrom, addressTo);
 
-        message.Subject = "Account Confirmation";
+        message.Subject = "Підтвердження облікового запису";
         message.IsBodyHtml = true;
         string htmlString = @$"<html>
                       <body style='background-color: #f7f1d5; 
                         padding: 15px; border-radius: 15px; 
                         box-shadow: 5px 5px 15px 5px #9F9F9F;
                         font-size: 16px;'>
-                      <p>Hello {user.UserName},</p>
-                      <p>Please, confirm your account by clicking the following link.</p>
-                      <a href={url}>Confirm Account</a>
-                         <p>Thank you,<br>-GroceryFinder</br></p>
+                      <p>Вітаємо, {user.UserName},</p>
+                      <p>Будь ласка, підтвердьте свій обліковий запис, натиснувши наступне посилання.</p>
+                      <a href={url}>Підтвердити обліковий запис</a>
+                         <p>Дякуємо,<br>-GroceryFinder</br></p>
                       </body>
                       </html>
                      ";

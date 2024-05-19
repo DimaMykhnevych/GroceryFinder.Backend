@@ -9,5 +9,6 @@ public class Product
     public AllergenType AllergenType { get; set; } = AllergenType.None;
 
     public ICollection<ProductGroceryStore> ProductGroceryStores { get; set; }
+    public ICollection<PriceUpdateSubscription> PriceUpdateSubscriptions { get; set; }
 }
 
