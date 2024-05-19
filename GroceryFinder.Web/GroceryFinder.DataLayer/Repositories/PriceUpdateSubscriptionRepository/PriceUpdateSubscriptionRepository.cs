@@ -17,6 +17,17 @@ public class PriceUpdateSubscriptionRepository : Repository<PriceUpdateSubscript
             .FirstOrDefaultAsync(p => p.Id == id);
     }
 
+    public async Task<IEnumerable<PriceUpdateSubscription>> GetSubscriptionsWithUserAndProductInfo()
+    {
+        return await context.PriceUpdateSubscription
+            .AsNoTracking()
+            .Include(p => p.AppUser)
+            .AsNoTracking()
+            .Include(p => p.Product)
+            .AsNoTracking()
+            .ToListAsync();
+    }
+
     public async Task<IEnumerable<PriceUpdateSubscription>> GetUserSubscriptionsWithProductInfo(Guid userId)
     {
         return await context.PriceUpdateSubscription

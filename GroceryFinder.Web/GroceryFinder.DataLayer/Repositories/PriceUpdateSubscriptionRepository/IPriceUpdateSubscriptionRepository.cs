@@ -6,5 +6,6 @@ public interface IPriceUpdateSubscriptionRepository : IRepository<PriceUpdateSub
 {
     Task<PriceUpdateSubscription> GetSubscriptionWithProductInfo(Guid id);
     Task<IEnumerable<PriceUpdateSubscription>> GetUserSubscriptionsWithProductInfo(Guid userId);
+    Task<IEnumerable<PriceUpdateSubscription>> GetSubscriptionsWithUserAndProductInfo();
 }
 

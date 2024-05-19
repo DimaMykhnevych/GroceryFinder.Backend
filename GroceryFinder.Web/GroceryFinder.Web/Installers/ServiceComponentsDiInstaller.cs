@@ -1,4 +1,5 @@
-﻿using GroceryFinder.BusinessLayer.Factories;
+﻿using GroceryFinder.BusinessLayer.Extensions;
+using GroceryFinder.BusinessLayer.Factories;
 using GroceryFinder.BusinessLayer.Services.AuthorizationService;
 using GroceryFinder.BusinessLayer.Services.EmailService;
 using GroceryFinder.BusinessLayer.Services.GroceryStoreService;
@@ -8,6 +9,7 @@ using GroceryFinder.BusinessLayer.Services.ProductService;
 using GroceryFinder.BusinessLayer.Services.UserAllergyService;
 using GroceryFinder.BusinessLayer.Services.UserService;
 using GroceryFinder.DataLayer.Builders.GroceryStoreQueryBuilder;
+using GroceryFinder.DataLayer.Repositories.EmailQueueItemRepository;
 using GroceryFinder.DataLayer.Repositories.GroceryStoreRepository;
 using GroceryFinder.DataLayer.Repositories.PriceUpdateSubscriptionRepository;
 using GroceryFinder.DataLayer.Repositories.ProductGroceryStoreRepository;
@@ -34,6 +36,12 @@ public class ServiceComponentsDiInstaller : IInstaller
         services.AddTransient<IUserAllergyService, UserAllergyService>();
         services.AddTransient<IPriceUpdateSubscriptionService, PriceUpdateSubscriptionService>();
 
+        // hosted services
+        if (configuration.PriceUpdateEmailNotificationEnabled())
+        {
+            services.AddHostedService<EmailNotificationService>();
+        }
+
         // builders
         services.AddTransient<IGroceryStoreQueryBuilder, GroceryStoreQueryBuilder>();
 
@@ -44,6 +52,7 @@ public class ServiceComponentsDiInstaller : IInstaller
         services.AddTransient<IProductGroceryStoreRepository, ProductGroceryStoreRepository>();
         services.AddTransient<IUserAllergyRepository, UserAllergyRepository>();
         services.AddTransient<IPriceUpdateSubscriptionRepository, PriceUpdateSubscriptionRepository>();
+        services.AddTransient<IEmailQueueItemRepository, EmailQueueItemRepository>();
     }
 }
 

@@ -17,6 +17,7 @@ public class GroceryFinderDbContext : IdentityDbContext<AppUser, UserRole, Guid>
     public DbSet<ProductGroceryStore> ProductGroceryStores { get; set; }
     public DbSet<UserAllergy> UserAllergy { get; set; }
     public DbSet<PriceUpdateSubscription> PriceUpdateSubscription { get; set; }
+    public DbSet<EmailQueueItem> EmailQueueItems { get; set; }
 
     protected override void OnModelCreating(ModelBuilder builder)
     {

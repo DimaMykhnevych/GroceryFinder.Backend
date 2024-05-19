@@ -9,5 +9,10 @@ public static class ConfigurationExtensions
     {
         return bool.TryParse(configuration[ConfigurationKeys.EmailConfirmationEnabled], out bool result) && result;
     }
+
+    public static bool PriceUpdateEmailNotificationEnabled(this IConfiguration configuration)
+    {
+        return bool.TryParse(configuration[ConfigurationKeys.PriceUpdateEmailNotificationEnabled], out bool result) && result;
+    }
 }
 

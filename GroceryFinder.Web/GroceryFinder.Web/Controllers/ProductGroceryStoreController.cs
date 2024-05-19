@@ -35,5 +35,15 @@ public class ProductGroceryStoreController : ControllerBase
         ProductGroceryStoreDto addedProductGroceryStore = await _productGroceryStoreService.AddProductGroceryStore(productGroceryStoreDto);
         return Ok(addedProductGroceryStore);
     }
+
+    [HttpPut]
+    [Authorize(Roles = Role.Admin)]
+    [SwaggerOperation(Summary = "Updates existing product in grocery store",
+    Description = "Available only for administrators")]
+    public async Task<IActionResult> UpdateProductGroceryStore([FromBody] ProductGroceryStoreDto productGroceryStoreDto)
+    {
+        ProductGroceryStoreDto updateProductGroceryStore = await _productGroceryStoreService.UpdateProductGroceryStore(productGroceryStoreDto);
+        return Ok(updateProductGroceryStore);
+    }
 }
 
